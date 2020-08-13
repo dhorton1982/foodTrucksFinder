@@ -17,15 +17,11 @@ Assumptions:
 
 Rationale behind technical choices:
 My intial thought process as it relates to what needs to be done to solve the specified problem:
-    - Read in the data from the .csv file.
-        ◦ This should only be done once and a flag (e.g. csvFileRead) should be set and checked upon subsequent calls. A hash of the CSV file or checking the last modified timestamp could be used to determine if the file has changed.
+    - Read in the data from the .csv file. This should only be done once and a flag (e.g. csvFileRead) should be set and checked upon subsequent calls. A hash of the CSV file or checking the last modified timestamp could be used to determine if the file has changed.
     - See if I can come up with a way to determine whether each existing latitude/longitude exists within a given region (i.e. SW, NW, SE, NE of San Francisco or zip code) and subsequently set the region/zip code. This information could be used to reduce the overall number of locations for which the distance has to be calculated.
-    - Filter the following:
-        ◦ Filter out any data that doesn’t have a status of APPROVED.
-        ◦ Filter out the “days/hours” (i.e. I assume based on the current time in San Francisco).
+    - Filter the following: Filter out any data that doesn’t have a status of APPROVED; Filter out the “days/hours” (i.e. I assume based on the current time in San Francisco).
     - Calculate the distance between the specified latitude/longitude and each latitude/longitude from the .csv data set. Subsequently, set the distance on the FoodTrucksData data structure. 
-    - Sort the data structure holding the FoodTrucksData based on the distance.
-        ◦ Maybe I could use a Treemap as this would allow me to store the data from the CSV file, use the distance as a key, and it is always automatically sorted.
+    - Sort the data structure holding the FoodTrucksData based on the distance. Maybe I could use a Treemap as this would allow me to store the data from the CSV file, use the distance as a key, and it is always automatically sorted.
     - Return a list of the five nearest food trucks.
     
 Tradeoffs:
